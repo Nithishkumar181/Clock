@@ -4,92 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style> 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: lightcoral;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.clock-container {
-    text-align: center;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-   
-}
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.clock {
-    font-size: 3em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> 
+    
 </head>
-<script>
-        let display;
-        function formatTime(hours, minutes, seconds) {
-    return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-}    
-        
-        function update()
-        {
-            let datetime=new Date();
-            let time =datetime.toLocaleTimeString();
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
-            
-            document.getElementById('clock').textContent=formatTime(hours, minutes, seconds);
-        }
-        
-        function start()
-        {
-        display=setInterval(update,1000);
-        document.getElementById("startBtn");
-        }
-  
-        function stop()
-        {
-        alert("stopped");
-        clearInterval(display);
-        document.getElementById("stopBtn");
-        }
-</script>
+<style>
+    body {
+    background-color: blueviolet;
+}
+.container{
+    justify-content: center;
+    text-align: center;
+}
+
+#taskList {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.task-item button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+</style>
 <body>
-    <div class="clock-container">
-        <h1>Clock</h1>
-        <div id="clock" class="clock">00:00:00</div>
-        <button id="startBtn" onclick="start()">start</button>
-        <button style="background-color: red;" id="stopBtn" onclick="stop()">Stop</button>
+    <div class="container">
+        <h1 class="text-center my-4">To-Do List</h1>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <input type="text" id="taskInput" class="form-control" placeholder="Add a new task"><br>
+                <button id="addBtn" class="btn btn-primary ">Add Task</button>
+                <ul id="taskList"></ul>
+            </div>
+        </div>
     </div>
+
+    <script src="app.js"></script>
     
 </body>
 </html>
